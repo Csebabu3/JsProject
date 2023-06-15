@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+</head>
+<script>
+    function editRow(id) {
+  $.ajax({
+    type: "GET",
+    url: "https://6465bc0c9c09d77a62f2717c.mockapi.io/studentForm/" + id,
+    success: function(response) {
+      $('#id').val(response.id);
+      $("#name").val(response.name);
+      $("#email").val(response.email);
+      $("#password").val(response.password);
+      $("#cpassword").val(response.cpassword);
+      $("#mobile").val(response.mobileno);
+      $("#dob").val(response.dob);
+      $("#qualification").val(response.qualifiction);
+      $("#Gender").val(response.gender);
+      EmpData = response;
+      alert("Edit row");
+    },
+    error: function(xhr, status, error) {
+      console.log("AJAX request failed: " + error);
+    }
+  });
+}
+
+</script>
+<body>
+    <input type="hidden" id="id">
+<!-- ... other form elements ... -->
+<div class="error-msg" id="nameerr"></div>
+<div class="error-msg" id="emailerr"></div>
+<div class="error-msg" id="passworderr"></div>
+<div class="error-msg" id="cpassworderr"></div>
+<div class="error-msg" id="mobileerr"></div>
+<div class="error-msg" id="doberr"></div>
+<div class="error-msg" id="qualificationerr"></div>
+<div class="error-msg" id="Gendererr"></div>
+
+</body>
+</html>
